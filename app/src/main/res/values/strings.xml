@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">BoilerDemo</string>
+    <string name="data">数据显示</string>
+    <string name="control_set">控制设定</string>
+    <string name="param_set">参数设定</string>
+    <string name="his_warm">历史报警</string>
+
+    <string name="update_download_finish">下载完成</string>
+    <string name="update_download_start">开始下载</string>
+    <string name="update_download_failed">下载失败</string>
+    <string name="update_download_progressing">正在下载</string>
+
+    <string name="device_manager">设备管理</string>
+    <string name="real_time_monitoring">实时监控</string>
+    <string name="data_analysis">数据分析</string>
+    <string name="maintenance">维修保养</string>
+    <string name="optimization_suggestions">优化建议</string>
+    <string name="alarm_management">报警管理</string>
+    <string name="about">关于</string>
+    <string name="about_us">关于我们</string>
+    <string name="update">检查更新</string>
+    <string name="current_version">当前版本</string>
+    <string name="exit">退出当前账号</string>
 </resources>

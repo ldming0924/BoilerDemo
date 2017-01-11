@@ -2,7 +2,9 @@ package com.kawakp.demingliu.boilerdemo.tree.bean;
 
 
 
-import com.kawakp.demingliu.jinandemo.R;
+
+
+import com.kawakp.demingliu.boilerdemo.R;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
