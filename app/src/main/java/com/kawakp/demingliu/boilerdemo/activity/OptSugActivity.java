@@ -6,6 +6,7 @@ import android.view.View;
 import com.kawakp.demingliu.boilerdemo.R;
 import com.kawakp.demingliu.boilerdemo.base.BaseActivity;
 import com.kawakp.demingliu.boilerdemo.utils.ActivityManager;
+import com.kawakp.demingliu.boilerdemo.widget.systembar.StatusBarUtil;
 
 import butterknife.OnClick;
 
@@ -22,6 +23,7 @@ public class OptSugActivity extends BaseActivity {
     @Override
     public void initViews(Bundle savedInstanceState) {
         ActivityManager.getInstance().addActivity(this);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.stastusbar_bg),0);
     }
 
     @OnClick({R.id.lin_back})

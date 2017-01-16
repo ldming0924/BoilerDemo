@@ -17,4 +17,13 @@
 
     </style>
 
+    <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_bg</item>
+    </style>
+
+    <style name="myanimation">
+        <item name="android:windowEnterAnimation">@anim/window_pop_anim</item>
+        <item name="android:windowExitAnimation">@anim/popup_window_exit</item>
+    </style>
+
 </resources>

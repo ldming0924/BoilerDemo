@@ -1,31 +1,34 @@
 package com.kawakp.demingliu.boilerdemo.base;
 
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+
 public abstract class BaseFragment extends Fragment {
-    private View view;
-    private LayoutInflater inflater;
+    protected View mRootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (this.inflater == null) {
-            this.inflater = inflater;
+        if (mRootView == null) {
+            mRootView = inflater.inflate(setContentViewId(), container, false);
+            ButterKnife.bind(this, mRootView);
+            init();
+        }else {
+            ViewGroup parent = (ViewGroup) mRootView.getParent();
+            if (parent != null) {
+                parent.removeView(mRootView);
+            }
         }
-
-        initView(view);
-        initData();
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return mRootView;
     }
 
-
-    protected abstract void initView(View view);
-
-    protected abstract void initData();
-
+    protected abstract int setContentViewId();
+    protected abstract void init();
 
 }

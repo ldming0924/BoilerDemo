@@ -161,4 +161,18 @@ public class SharedPerferenceHelper {
         SharedPreferences sharedPreferences = context.getSharedPreferences("ISFIRST",context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("ISFIRST",false);
     }
+
+    //保存是否更新
+    public static boolean savaIsupdate(Context context,String b){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("ISUPDATE",context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("ISUPDATE",b);
+        editor.commit();
+        return true;
+    }
+
+    public static String getIsUpdate(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("ISUPDATE",context.MODE_PRIVATE);
+        return sharedPreferences.getString("ISUPDATE",null);
+    }
 }

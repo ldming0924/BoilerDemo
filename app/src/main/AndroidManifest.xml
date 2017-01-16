@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kawakp.demingliu.boilerdemo">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:name=".base.MyApplication"
@@ -10,13 +19,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.RealTimeMonActivity"/>
         <activity android:name=".activity.DeviceManagerActivity"/>
@@ -26,6 +36,10 @@
         <activity android:name=".activity.AlarmManagerActivity"/>
         <activity android:name=".activity.AboutActivity"/>
         <activity android:name=".activity.AboutUsActivity"/>
+
+        <service android:name=".service.RealTimeDataService"/>
+        <service android:name=".service.UpdateService"/>
+        <service android:name=".service.WarnService"/>
     </application>
 
 </manifest>

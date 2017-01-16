@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -17,9 +18,11 @@ import com.bigkoo.convenientbanner.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.kawakp.demingliu.boilerdemo.R;
 import com.kawakp.demingliu.boilerdemo.base.BaseActivity;
+import com.kawakp.demingliu.boilerdemo.canstant.Canstant;
 import com.kawakp.demingliu.boilerdemo.http.OkHttpHelper;
 import com.kawakp.demingliu.boilerdemo.http.SimpleCallback;
 import com.kawakp.demingliu.boilerdemo.service.UpdateService;
+import com.kawakp.demingliu.boilerdemo.service.WarnService;
 import com.kawakp.demingliu.boilerdemo.utils.ActivityManager;
 import com.kawakp.demingliu.boilerdemo.utils.LocalImageHolderView;
 
@@ -29,9 +32,11 @@ import java.util.List;
 
 import com.bigkoo.convenientbanner.ConvenientBanner.Transformer;
 import com.kawakp.demingliu.boilerdemo.utils.PathUtils;
+import com.kawakp.demingliu.boilerdemo.utils.ServiceHelper;
 import com.kawakp.demingliu.boilerdemo.utils.SharedPerferenceHelper;
 import com.kawakp.demingliu.boilerdemo.utils.SystemVerdonCode;
 import com.kawakp.demingliu.boilerdemo.widget.CommonDialog;
+import com.kawakp.demingliu.boilerdemo.widget.systembar.StatusBarUtil;
 
 import org.json.JSONException;
 
@@ -88,8 +93,9 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initViews(Bundle savedInstanceState) {
         ActivityManager.getInstance().addActivity(this);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.stastusbar_bg),0);
+
         initView();
-        initData();
         init();
 
     }
@@ -104,11 +110,18 @@ public class MainActivity extends BaseActivity {
     }
 
     private void init() {
+
+        //TODO 判断服务是否在运行
+        if (!ServiceHelper.isServiceWork(getApplicationContext(), Canstant.INTENTFILTER)) {
+            Intent intent = new Intent(getApplicationContext(), WarnService.class);
+            startService(intent);
+        }
         getAppMessage();
         loadTestDatas();
         setPges();
 
     }
+
     private void initData(){
         device = SharedPerferenceHelper.getDeviceId(MainActivity.this);
     }
@@ -199,7 +212,7 @@ public class MainActivity extends BaseActivity {
     * */
     private void loadTestDatas() {
         //本地图片集合
-        for (int position = 0; position < 7; position++)
+        for (int position = 0; position < 1; position++)
             localImages.add(getResId("ic_test_" + position, R.drawable.class));
 
         //各种翻页效果
@@ -242,6 +255,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        initData();
         //开始自动翻页
         convenientBanner.startTurning(2000);
     }
@@ -272,6 +286,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onSuccess(Response response, String s) {
+                Log.d("MainActivity","获取app信息:"+s);
                 if (s != null && !s.equals("")) {
                     org.json.JSONObject object = null;
                     try {
@@ -280,7 +295,6 @@ public class MainActivity extends BaseActivity {
                         appName = object.getString("appName");
                         int code = SystemVerdonCode.getAppVersionCode(MainActivity.this);
                         if (versionCode > code) {
-
                             showNoticeDialog();
                         }
                     } catch (JSONException e) {
@@ -305,6 +319,7 @@ public class MainActivity extends BaseActivity {
         CommonDialog.Builder builder = new CommonDialog.Builder(this);
         builder.setTitle("升级提示");
         builder.setMessage("检测到新版本，立即更新吗");
+        builder.setWidth((int)(MainActivity.this.getWindowManager().getDefaultDisplay().getWidth()*0.8));
         builder.setPositiveButton("更新", new DialogInterface.OnClickListener() {
 
             @Override
@@ -335,7 +350,6 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-
             }
         });
         builder.create().show();
@@ -345,7 +359,7 @@ public class MainActivity extends BaseActivity {
      * 启动更新下载服务
      */
     private void startUpdateService() {
-        String urlPath = "http://58.250.204.112:58010/userconsle/clientApps/" + appName + "/file";
+        String urlPath = PathUtils.NEWAPP + appName + "/file";
         Intent intent = new Intent(MainActivity.this, UpdateService.class);
         intent.putExtra("apkUrl", urlPath);
         intent.putExtra("TIME", System.currentTimeMillis() + "");

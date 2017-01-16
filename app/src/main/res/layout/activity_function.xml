@@ -4,21 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#434A54">
+
+        <TextView
+            android:text="@string/function_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView5"
+            android:textColor="@color/white"
+            android:textSize="@dimen/px_text_32"/>
+    </RelativeLayout>
     <com.bigkoo.convenientbanner.ConvenientBanner
         android:id="@+id/convenientBanner"
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
     <LinearLayout
+        android:layout_marginBottom="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
+            android:layout_marginTop="@dimen/px_16"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/px_20"
-            android:layout_marginRight="@dimen/px_20">
+            android:layout_marginLeft="@dimen/px_28"
+            android:layout_marginRight="@dimen/px_28">
+
             <LinearLayout
                 android:id="@+id/lin_device_manager"
                 android:layout_width="0dp"
@@ -26,17 +44,19 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 >
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/icon_equipment"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/device_manager"/>
+                    android:text="@string/device_manager"
+                    android:layout_marginTop="@dimen/px_20"/>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/lin_real_time_monitoring"
                 android:layout_width="0dp"
@@ -44,17 +64,19 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 android:layout_marginLeft="5dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/icon_monitoring"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/real_time_monitoring"/>
+                    android:text="@string/real_time_monitoring"
+                    android:layout_marginTop="@dimen/px_20"/>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/lin_data_analysis"
                 android:layout_width="0dp"
@@ -62,16 +84,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 android:layout_marginLeft="5dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/icon_data"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/data_analysis"/>
+                    android:text="@string/data_analysis"
+                    android:layout_marginTop="@dimen/px_20"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -79,8 +102,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/px_20"
-            android:layout_marginRight="@dimen/px_20"
+            android:layout_marginLeft="@dimen/px_28"
+            android:layout_marginRight="@dimen/px_28"
             android:layout_marginTop="@dimen/px_10">
             <LinearLayout
                 android:id="@+id/lin_maintenance"
@@ -89,16 +112,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 >
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/icon_maintenance"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/maintenance"/>
+                    android:text="@string/maintenance"
+                    android:layout_marginTop="@dimen/px_20"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/lin_optimization_suggestions"
@@ -107,16 +131,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 android:layout_marginLeft="5dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/icon_suggestions"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/optimization_suggestions"/>
+                    android:text="@string/optimization_suggestions"
+                    android:layout_marginTop="@dimen/px_20"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/lin_alarm_management"
@@ -125,16 +150,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 android:layout_marginLeft="5dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/icon_alarm"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/alarm_management"/>
+                    android:text="@string/alarm_management"
+                    android:layout_marginTop="@dimen/px_20"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -142,8 +168,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/px_20"
-            android:layout_marginRight="@dimen/px_20"
+            android:layout_marginLeft="@dimen/px_28"
+            android:layout_marginRight="@dimen/px_28"
             android:layout_marginTop="@dimen/px_10">
 
             <LinearLayout
@@ -153,16 +179,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 >
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:src="@drawable/icon_about"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/about"/>
+                    android:text="@string/about"
+                    android:layout_marginTop="@dimen/px_20"/>
             </LinearLayout>
 
             <LinearLayout
@@ -171,17 +198,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 android:layout_marginLeft="5dp">
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/white"
+                android:background="@drawable/cardback_shape"
                 android:layout_marginLeft="5dp">
 
             </LinearLayout>

@@ -56,7 +56,7 @@ public class UpdateService extends Service {
     public void onCreate() {
         super.onCreate();
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
+        Log.d("TAG","----------------------------------");
     }
 
     @Override
@@ -107,7 +107,7 @@ public class UpdateService extends Service {
      */
     private PendingIntent getContentIntent() {
         Log.e("tag", "getContentIntent()");
-        File apkfile = new File(mSavePath,time+"热力管家.apk");
+        File apkfile = new File(mSavePath,time+"节能管家.apk");
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive");
@@ -173,7 +173,7 @@ public class UpdateService extends Service {
                         //is = response.body().byteStream();
                         is = inputStream;
                         long total = length;
-                        File file = new File(mSavePath , time+"热力管家.apk");
+                        File file = new File(mSavePath , time+"节能管家.apk");
                         fos = new FileOutputStream(file);
                         long sum = 0;
 

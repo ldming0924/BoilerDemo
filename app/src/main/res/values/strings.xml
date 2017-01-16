@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">BoilerDemo</string>
+    <string name="app_name">节能管家</string>
     <string name="data">数据显示</string>
     <string name="control_set">控制设定</string>
     <string name="param_set">参数设定</string>
-    <string name="his_warm">历史报警</string>
+    <string name="process_monitoring">流程监控</string>
 
     <string name="update_download_finish">下载完成</string>
     <string name="update_download_start">开始下载</string>
@@ -21,4 +21,19 @@
     <string name="update">检查更新</string>
     <string name="current_version">当前版本</string>
     <string name="exit">退出当前账号</string>
+    <string name="login">登录</string>
+    <string name="hezuo">合作方</string>
+    <string name="function_menu">功能菜单</string>
+    <string name="alarm_state">报警与状态</string>
+    <string name="alarm_his">历史报警</string>
+    <string name="time_selection">时间选择</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+    <string name="sure">确定</string>
+    <string name="cancle">取消</string>
+
+
 </resources>

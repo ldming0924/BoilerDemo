@@ -4,13 +4,20 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,13 +28,16 @@ import com.kawakp.demingliu.boilerdemo.http.SimpleCallback;
 import com.kawakp.demingliu.boilerdemo.service.UpdateService;
 import com.kawakp.demingliu.boilerdemo.utils.ActivityManager;
 import com.kawakp.demingliu.boilerdemo.utils.PathUtils;
+import com.kawakp.demingliu.boilerdemo.utils.PopUtils;
 import com.kawakp.demingliu.boilerdemo.utils.SystemVerdonCode;
 import com.kawakp.demingliu.boilerdemo.widget.CommonDialog;
+import com.kawakp.demingliu.boilerdemo.widget.systembar.StatusBarUtil;
 
 import org.json.JSONException;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import dmax.dialog.SpotsDialog;
 import okhttp3.Response;
 
 /**
@@ -37,6 +47,7 @@ import okhttp3.Response;
 public class AboutActivity extends BaseActivity {
     @Bind(R.id.tv_version_name)
     TextView tvVersionName;
+
 
     private int sysVersionCode; //本地app版本
     private String sysvVersionName;
@@ -52,6 +63,7 @@ public class AboutActivity extends BaseActivity {
     @Override
     public void initViews(Bundle savedInstanceState) {
         ActivityManager.getInstance().addActivity(this);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.stastusbar_bg),0);
         initData();
     }
 
@@ -70,8 +82,7 @@ public class AboutActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.button_exit:
-                startActivity(new Intent(AboutActivity.this,LoginActivity.class));
-                finish();
+                showExitPop();
                 break;
             case R.id.rel_update:
                 //获取云端code
@@ -81,6 +92,40 @@ public class AboutActivity extends BaseActivity {
                 startActivity(new Intent(AboutActivity.this,AboutUsActivity.class));
                 break;
         }
+    }
+
+    private void showExitPop() {
+        View v = LayoutInflater.from(AboutActivity.this).inflate(R.layout.pow_exit, null);
+        final PopupWindow pw = new PopupWindow(v, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, false);
+        pw.setFocusable(true);
+        pw.setOutsideTouchable(false);
+        pw.setBackgroundDrawable(new BitmapDrawable());
+        pw.setAnimationStyle(R.style.myanimation);
+        pw.showAtLocation(v, Gravity.CENTER, 0, 0);
+        pw.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+            @Override
+            public void onDismiss() {
+                PopUtils.setBackgroundAlpha(1.0f, AboutActivity.this);//设置Popw消失背景为透明
+            }
+        });
+        PopUtils.setBackgroundAlpha(0.5f, AboutActivity.this);//设置popw出现时背景透明度
+        TextView lin_sure = (TextView) v.findViewById(R.id.textView_sure);
+        TextView lin_cancel = (TextView) v.findViewById(R.id.textView_cancle);
+        lin_sure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AboutActivity.this,LoginActivity.class));
+                finish();
+
+            }
+        });
+        lin_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pw.dismiss();
+            }
+        });
     }
 
     /**
@@ -129,6 +174,7 @@ public class AboutActivity extends BaseActivity {
         CommonDialog.Builder builder = new CommonDialog.Builder(this);
         builder.setTitle("升级提示");
         builder.setMessage("检测到新版本，立即更新吗");
+        builder.setWidth((int)(AboutActivity.this.getWindowManager().getDefaultDisplay().getWidth()*0.8));
         builder.setPositiveButton("更新", new DialogInterface.OnClickListener() {
 
             @Override
@@ -169,7 +215,7 @@ public class AboutActivity extends BaseActivity {
      * 启动更新下载服务
      */
     private void startUpdateService() {
-        String urlPath = "http://kawakp.chinclouds.com:60034/userconsle/clientApps/" + appName + "/file";
+        String urlPath = PathUtils.NEWAPP + appName + "/file";
         Intent intent = new Intent(AboutActivity.this, UpdateService.class);
         intent.putExtra("apkUrl", urlPath);
         intent.putExtra("TIME", System.currentTimeMillis() + "");

@@ -45,6 +45,7 @@ public class CommonDialog extends Dialog {
 		private OnClickListener positiveButtonListener;
 		private OnClickListener negativeButtonListener;
 		private View contentView;
+		private int width;
 
 		/**
 		 * 建造器的构造方法：
@@ -53,6 +54,11 @@ public class CommonDialog extends Dialog {
 		 */
 		public Builder(Context context) {
 			this.context = context;
+		}
+
+		public Builder setWidth(int width) {
+			this.width = width;
+			return this;
 		}
 
 		/**
@@ -128,6 +134,7 @@ public class CommonDialog extends Dialog {
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View dialogLayoutView = inflater.inflate(R.layout.dialog_update_layout,
 					null);
+			dialogLayoutView.setMinimumWidth((int) width);//设置dialog的宽度
 			dialog.addContentView(dialogLayoutView, new LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			if (!TextUtils.isEmpty(title)) {

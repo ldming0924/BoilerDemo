@@ -2,32 +2,74 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
 
+
+    <FrameLayout
+        android:id="@+id/framLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+
+    <!--<android.support.v4.app.FragmentTabHost
+        android:id="@+id/fragmentTabHost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        >
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0" >
+        </FrameLayout>
+    </android.support.v4.app.FragmentTabHost>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
         <LinearLayout
-            android:id="@+id/lin_back"
-            android:orientation="horizontal"
-            android:layout_width="60dp"
+            android:id="@+id/lin_state"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:orientation="vertical"
             android:gravity="center">
             <ImageView
-                android:src="@mipmap/ic_launcher"
+                android:id="@+id/img_state"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_police_higlight"/>
+            <TextView
+                android:id="@+id/tv_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alarm_state"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
-
-        <TextView
-            android:text="@string/alarm_management"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/textView3" />
-    </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/lin_his"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/img_his"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/parm_his_select"/>
+            <TextView
+                android:id="@+id/tv_his"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alarm_his"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
