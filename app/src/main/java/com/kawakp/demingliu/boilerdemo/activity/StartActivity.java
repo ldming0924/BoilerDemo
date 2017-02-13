@@ -16,7 +16,7 @@ import com.kawakp.demingliu.boilerdemo.utils.IToast;
 import com.kawakp.demingliu.boilerdemo.utils.NetUtils;
 import com.kawakp.demingliu.boilerdemo.utils.PathUtils;
 import com.kawakp.demingliu.boilerdemo.utils.SharedPerferenceHelper;
-import com.kawakp.demingliu.boilerdemo.widget.systembar.StatusBarUtil;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;

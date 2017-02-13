@@ -84,7 +84,11 @@
             <include layout="@layout/average_load"></include>
 
             <include layout="@layout/average_efficiency"></include>
-
+            <include layout="@layout/energy_saving"></include>
+            <include layout="@layout/dust_reduction"></include>
+            <include layout="@layout/carbon_reduction"></include>
+            <include layout="@layout/nitrogen_reduction"></include>
+            <include layout="@layout/sulfur_reduction"></include>
 
         </LinearLayout>
     </ScrollView>

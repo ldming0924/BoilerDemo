@@ -6,27 +6,28 @@ package com.kawakp.demingliu.boilerdemo.utils;
 
 public class PathUtils {
     //获取app信息
-    public final static String APP_MSG_PATH = "http://58.250.204.112:58010/userconsle/clientApps/boiler";
-
-    public static final String LOGIN_PATH = "http://58.250.204.112:58010/userconsle/login";
+    public static final String APP_MSG_PATH = "http://kawakp.chinclouds.com/userconsle/clientApps/boiler";
+    //登录
+    public static final String LOGIN_PATH = "http://kawakp.chinclouds.com/userconsle/login";
     //设备列表
-    public final static String DEVICELIST_PATH = "http://58.250.204.112:58010/userconsle/devices?";
+    public static final String DEVICELIST_PATH = "http://kawakp.chinclouds.com/userconsle/devices?";
     //设备组织结构
-    public final static String DEVICE_ORG = "http://58.250.204.112:58010/userconsle/orgs";
+    public static final String DEVICE_ORG = "http://kawakp.chinclouds.com/userconsle/orgs?orgId=";
     //实时数据
-    public final static String REALTIME_DATA = "http://58.250.204.112:58010/userconsle/devices/";
+    public static final String REALTIME_DATA = "http://kawakp.chinclouds.com/userconsle/devices/";
     //获取元件列表
-    public final static String ELEMENT_LIST ="http://58.250.204.112:58010/userconsle/";
+    public static final String ELEMENT_LIST ="http://kawakp.chinclouds.com/userconsle/";
     //获取历史报警
-    public final static String HISTORY = "http://58.250.204.112:58010/userconsle/deviceAlarms?";
+    public static final String HISTORY = "http://kawakp.chinclouds.com/userconsle/deviceAlarms?";
     //控制设备
-    public static String DEVICE_SET = "http://58.250.204.112:58010/userconsle/devices/";
+    public static final String DEVICE_SET = "http://kawakp.chinclouds.com/userconsle/devices/";
     //下载新版本
-    public static String NEWAPP = "http://58.250.204.112:58010/userconsle/clientApps/";
+    public static final String NEWAPP = "http://kawakp.chinclouds.com/userconsle/clientApps/";
     //请求最新的一条报警信息
-    public static final String NEW_WARM = "http:58.250.204.112:58010/userconsle/deviceAlarms?pageSize=1";
+    public static final String NEW_WARM = "http://kawakp.chinclouds.com/userconsle/deviceAlarms?pageSize=1";
     //获取实时报警
-    public static final String REAL_WARN = "http://58.250.204.112:58010/userconsle/deviceAlarms?pageSize=0";
-
+    public static final String REAL_WARN = "http://kawakp.chinclouds.com/userconsle/deviceAlarms?pageSize=0";
+    //数据统计
+    public static final String DATA_STATISTICS ="http://kawakp.chinclouds.com/userconsle/devices/";
 
 }

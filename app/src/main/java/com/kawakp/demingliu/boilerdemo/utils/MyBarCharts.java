@@ -1,15 +1,23 @@
 package com.kawakp.demingliu.boilerdemo.utils;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.formatter.DefaultValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.kawakp.demingliu.boilerdemo.bean.DataAnalysisBean;
 
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -80,43 +88,56 @@ public class MyBarCharts {
         xAxis.setDrawGridLines(false);
         xAxis.setSpaceBetweenLabels(2);
 
+        //YAxis yAxis = barChart.getAxisLeft();
+       // yAxis.setValueFormatter(new MyYValueFormatter());
 
         barChart.animateY(1000); // 立即执行的动画,Y轴
     }
 
 
-    public BarData getBarData() {
+    public BarData getBarData(List<DataAnalysisBean> list, int type) {
         ArrayList<String> xValues = new ArrayList<String>();
         ArrayList<BarEntry> yValues = new ArrayList<BarEntry>();
-        float[] f = new float[]{10,20,15,30,48,45,21};
-        String[] s = new String[]{"14/1","15/1","16/1","17/1","18/1","19/1","20/1"};
-    /*    for (int i = 0; i < list.size(); i++) {
-            if (type == 0) {//浓度
-                yValues.add(new BarEntry((float) list.get(i).getD244(), i));
-            }else if (type == 1){//压力
-                yValues.add(new BarEntry((float) list.get(i).getD212(), i));
-            }else if (type == 2){//实时流量
-                yValues.add(new BarEntry((float) list.get(i).getD228(), i));
-            }else if (type == 3){//累计流量
-                yValues.add(new BarEntry((float) list.get(i).getD264(), i));
+       // float[] f = new float[]{10,20,15,30,40,45,21};
+        //String[] s = new String[]{"14/1","15/1","16/1","17/1","18/1","19/1","20/1"};
+        for (int i = 0; i < list.size(); i++) {
+            if (type == 0){//实时功率
+
+            }if (type == 1) {//平均负荷
+                yValues.add(new BarEntry((float) list.get(i).getPJ_FH(), i));
+            }else if (type == 2){//平均效率
+
+            }else if (type == 3){//节能量
+                yValues.add(new BarEntry((float) list.get(i).getJ_NL(), i));
+                Log.d("MyBarCharts", list.get(i).getJ_NL()+"-------11111111---------------");
+            }else if (type == 4){//尘减排量
+                yValues.add(new BarEntry((float) list.get(i).getC_JPL(), i));
+                Log.d("MyBarCharts",(float) list.get(i).getC_JPL()+"-----------22222222222222222----------");
+            }else if (type == 5){//碳减排量
+                yValues.add(new BarEntry((float) list.get(i).getT_JPL(), i));
+            }else if (type == 6){//氮减排量
+                yValues.add(new BarEntry((float) list.get(i).getD_JPL(), i));
+            }else if (type == 7){//硫减排量
+                yValues.add(new BarEntry((float) list.get(i).getL_JPL(), i));
             }
-            SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-            Date curDate = new Date(list.get(i).getDate());//获取当前时间
+          /*  SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+            Date curDate = new Date(list.get(i).getDateStr());//获取当前时间
             String str = formatter.format(curDate);
             String[] s = str.split(" ");
-            String time = s[1].substring(0,5);
-            xValues.add(time); // 设置每个壮图的文字描述
-        }*/
-        for (int i = 0;i<7;i++){
-            yValues.add(new BarEntry(f[i], i));
-            xValues.add(s[i]);
+            String time = s[1].substring(0,5);*/
+            String time = list.get(i).getDateStr();
+            String[] s = time.split(" ");
+            String[] s1 = s[0].split("-");
+            String date = s1[2]+"/"+s1[1];
+            xValues.add(date); // 设置每个壮图的文字描述
         }
+
 
 
         // y轴的数据集合
         BarDataSet barDataSet = new BarDataSet(yValues, "ceshi");
         ArrayList<Integer> colors = new ArrayList<Integer>();
-        for(int i = 0;i < f.length ;i++){
+        for(int i = 0;i < list.size() ;i++){
             colors.add(Color.parseColor(color[i]));
         }
         barDataSet.setColors(colors);
@@ -128,6 +149,14 @@ public class MyBarCharts {
         // 绘制值
         barDataSet.setDrawValues(true);
         BarData barData = new BarData(xValues, barDataSets);
+        /*barData.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float v, Entry entry, int i, ViewPortHandler viewPortHandler) {
+                DecimalFormat df = new DecimalFormat("#.00");  //生成一个df对象，确保放大的value也是小数点后一位
+                return ""+df.format(v);  //确保返回的数值时0.0
+
+            }
+        });*/
         return barData;
     }
 

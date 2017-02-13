@@ -66,6 +66,7 @@ public class WarnService extends Service  {
 
                                 @Override
                                 public void onSuccess(Response response, String s) {
+                                    Log.d("TAG",s+"----------------");
                                     JSONObject object = null;
                                     try {
                                         object = new JSONObject(s);
@@ -88,7 +89,7 @@ public class WarnService extends Service  {
                                 }
                             });
                         }else {
-                            Log.d("WarnService","==============");
+                            //Log.d("WarnService","==============");
                         }
 
                     } catch (JSONException e) {

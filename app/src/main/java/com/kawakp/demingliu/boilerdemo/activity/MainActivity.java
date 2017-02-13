@@ -212,8 +212,8 @@ public class MainActivity extends BaseActivity {
     * */
     private void loadTestDatas() {
         //本地图片集合
-        for (int position = 0; position < 1; position++)
-            localImages.add(getResId("ic_test_" + position, R.drawable.class));
+        for (int position = 0; position < 5; position++)
+            localImages.add(getResId("ic_test_" + 0, R.drawable.class));
 
         //各种翻页效果
         transformerList.add(Transformer.DefaultTransformer.getClassName());

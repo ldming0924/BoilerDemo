@@ -65,7 +65,7 @@ public class DeviceManagerActivity extends BaseActivity {
         orgId = SharedPerferenceHelper.getOrgId(DeviceManagerActivity.this);
         device_url = PathUtils.DEVICELIST_PATH + "&pageNum=" + page + "&pageSize=" + pageSize;
         //获取组织结构url
-        String url = PathUtils.DEVICE_ORG;
+        String url = PathUtils.DEVICE_ORG+orgId;
         Log.d("TAG","------"+url+"　＝＝＝"+device_url);
         okHttpHelper = OkHttpHelper.getInstance(DeviceManagerActivity.this);
         //获取组织结构列表
@@ -133,7 +133,7 @@ public class DeviceManagerActivity extends BaseActivity {
                                 if (node.getDeviceId() != null ) {
                                     //if (node.getDeviceId() != null && node.getPlcDataModelId() != null) {
                                     //保存deviceModelId
-                                    boolean b = SharedPerferenceHelper.saveDeviceModelId(DeviceManagerActivity.this, node.getPlcDataModelId(), node.getDeviceId());
+                                    boolean b = SharedPerferenceHelper.saveDeviceModelId(DeviceManagerActivity.this, node.getPlcDataModelId(), node.getDeviceId(),node.getName());
                                     if (b) {
                                         finish();
                                     }

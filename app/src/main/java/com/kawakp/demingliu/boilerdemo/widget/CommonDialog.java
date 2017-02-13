@@ -18,7 +18,7 @@ import com.kawakp.demingliu.boilerdemo.R;
  * 自定义Dialog类---CommonDialog
  * 
  * @Time 2016年3月10日
- * @author lizy18
+ * @author
  */
 @SuppressLint("InflateParams")
 public class CommonDialog extends Dialog {

@@ -1,7 +1,6 @@
 package com.kawakp.demingliu.boilerdemo.fragment;
 
 import android.graphics.Color;
-import android.graphics.Path;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -88,6 +87,7 @@ public class AlarmHisFragment extends BaseFragment {
 
     @Override
     protected void init() {
+        btnSearch.setClickable(false);
         okHttpHelper = OkHttpHelper.getInstance(getActivity());
         initRefreshLayout();
         if (getActivity() != null) {
@@ -134,7 +134,7 @@ public class AlarmHisFragment extends BaseFragment {
 
                 totalPage =warmBeanMateralBean.getPages();
                 totallist = warmBeanMateralBean.getList();
-                Log.d("AlarmHisFragment","历史数据:"+totallist.toString());
+                //Log.d("AlarmHisFragment","历史数据:"+totallist.toString());
                 showWaresData(totallist);
             }
 
@@ -312,8 +312,8 @@ public class AlarmHisFragment extends BaseFragment {
                     tvStartDate.setTextColor(Color.parseColor("#74CB17"));
                 }
                 if (tvStartDate.getText().length()>0&&tvEndDate.getText().length()>0){
+                    btnSearch.setClickable(true);
                     btnSearch.setBackgroundResource(R.drawable.btn_select_shape);
-                    Log.d("TAG","-----------------"+tvStartDate.getText().toString()+"  AA  "+ tvEndDate.getText().length());
                 }
                 menuWindow.dismiss();
             }

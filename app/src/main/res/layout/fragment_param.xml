@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:id="@+id/textView3"
+            android:id="@+id/textView_title"
             android:textColor="@color/white"
             android:textSize="@dimen/px_text_32"/>
     </RelativeLayout>

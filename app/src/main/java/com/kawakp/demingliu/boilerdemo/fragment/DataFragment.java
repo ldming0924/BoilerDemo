@@ -78,21 +78,25 @@ public class DataFragment extends BaseFragment implements View.OnClickListener{
         url = PathUtils.ELEMENT_LIST +"devices/"+deviceID+ "/elementCategorys?" + "&type=MONITOR";
         Log.d("TAG",url);
         lin_back.setOnClickListener(this);
+
     }
 
 
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.lin_back:
-                getActivity().finish();
-                break;
-        }
-    }
+
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         getActivity().unregisterReceiver(realTimeBroadCase);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.lin_back:
+                getActivity().finish();
+                break;
+        }
     }
 
     private class RealTimeBroadCase extends BroadcastReceiver {

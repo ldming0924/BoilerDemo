@@ -19,6 +19,7 @@ public class ProcessMonitoringFragment extends BaseFragment implements View.OnCl
     @Bind(R.id.lin_back)
     LinearLayout lin_back;
 
+
     @Override
     protected int setContentViewId() {
         return R.layout.fragment_processmon;
@@ -26,8 +27,9 @@ public class ProcessMonitoringFragment extends BaseFragment implements View.OnCl
 
     @Override
     protected void init() {
-        lin_back.setOnClickListener(this);
+    lin_back.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {

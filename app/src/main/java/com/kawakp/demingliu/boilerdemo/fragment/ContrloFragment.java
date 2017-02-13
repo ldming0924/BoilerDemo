@@ -23,8 +23,9 @@ public class ContrloFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     protected void init() {
-    lin_back.setOnClickListener(this);
+        lin_back.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {

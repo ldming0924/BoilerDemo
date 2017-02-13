@@ -103,6 +103,12 @@ public class AlarmManagerActivity extends BaseActivity {
                 break;
             case R.id.lin_his:
                 setFragment(new AlarmHisFragment());
+                if (badgeView == null) {
+                    badgeView = new BadgeView(AlarmManagerActivity.this);
+                }
+                badgeView.setTargetView(lin_his);
+                badgeView.setBadgeCount(0);
+                boolean b = SharedPerferenceHelper.saveUpdateNum(getApplicationContext(), update); //保存报警条数到本地
                 img_state.setBackgroundResource(R.drawable.icon_police_default);
                 img_his.setBackgroundResource(R.drawable.icon_history_higlight);
                 tv_state.setTextColor(Color.GRAY);
@@ -126,7 +132,7 @@ public class AlarmManagerActivity extends BaseActivity {
                 //从本地读取报警条数
                 total = SharedPerferenceHelper.getUpdateNum(AlarmManagerActivity.this);
                 update = intent.getIntExtra("TOTAL", 0);
-                Log.d("AlarmManagerActivity",total+"   " +update);
+               // Log.d("AlarmManagerActivity",total+"   " +update);
                 int i = update - total;//获取更新的条数
                 if (badgeView == null) {
                     badgeView = new BadgeView(AlarmManagerActivity.this);

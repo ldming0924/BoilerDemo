@@ -27,6 +27,7 @@ import com.kawakp.demingliu.boilerdemo.fragment.ProcessMonitoringFragment;
 import com.kawakp.demingliu.boilerdemo.fragment.ParmFragment;
 import com.kawakp.demingliu.boilerdemo.service.RealTimeDataService;
 import com.kawakp.demingliu.boilerdemo.utils.ActivityManager;
+import com.kawakp.demingliu.boilerdemo.utils.SharedPerferenceHelper;
 import com.kawakp.demingliu.boilerdemo.widget.systembar.StatusBarUtil;
 
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class RealTimeMonActivity extends BaseActivity {
     FrameLayout mTabcontent;
     @Bind(R.id.fragmentTabHost)
     FragmentTabHost mTabHost;
+
     private List<Tab> list = new ArrayList<>();
     private RealTimeDataService realTimeDataService;
     @Override
@@ -59,6 +61,7 @@ public class RealTimeMonActivity extends BaseActivity {
     }
 
     private void initData() {
+
         Intent intent = new Intent(RealTimeMonActivity.this, RealTimeDataService.class);
         bindService(intent, conn, Context.BIND_AUTO_CREATE);
     }
@@ -124,6 +127,8 @@ public class RealTimeMonActivity extends BaseActivity {
         textView.setText(tab.getTitle());
         return view;
     }
+
+
 
 
 

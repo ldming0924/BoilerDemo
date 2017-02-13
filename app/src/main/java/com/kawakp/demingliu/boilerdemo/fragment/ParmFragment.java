@@ -89,7 +89,7 @@ public class ParmFragment extends BaseFragment implements View.OnClickListener{
 
         okHttpHelper = OkHttpHelper.getInstance(getActivity());
         deviceID = SharedPerferenceHelper.getDeviceId(getActivity());
-        lin_back.setOnClickListener(this);
+
         //获取分类
         url = PathUtils.ELEMENT_LIST +"devices/"+deviceID+ "/elementCategorys?" + "&type=PARAM";
         Log.d("TAG", url);
@@ -108,6 +108,8 @@ public class ParmFragment extends BaseFragment implements View.OnClickListener{
                 return false;
             }
         });
+
+        lin_back.setOnClickListener(this);
     }
 
     @Override
@@ -208,6 +210,7 @@ public class ParmFragment extends BaseFragment implements View.OnClickListener{
                 break;
         }
     }
+
 
     public class ParamsBroadcase extends BroadcastReceiver {
 

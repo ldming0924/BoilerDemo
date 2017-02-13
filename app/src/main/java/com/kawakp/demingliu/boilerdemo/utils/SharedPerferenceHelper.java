@@ -67,11 +67,12 @@ public class SharedPerferenceHelper {
 
     //保存deviceModelId
 
-    public static boolean saveDeviceModelId(Context context,String deviceModelId,String deviceID){
+    public static boolean saveDeviceModelId(Context context,String deviceModelId,String deviceID,String name){
         SharedPreferences sharedPreferences = context.getSharedPreferences("DEVICEMODILID",context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("MODELID",deviceModelId);
         editor.putString("DEVICEID",deviceID);
+        editor.putString("NAME",name);
         editor.commit();
         return true;
     }
@@ -86,6 +87,12 @@ public class SharedPerferenceHelper {
     public static String getDeviceId(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("DEVICEMODILID",context.MODE_PRIVATE);
         return sharedPreferences.getString("DEVICEID",null);
+    }
+
+    //获取设备名称
+    public static String getDeviceName(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("DEVICEMODILID",context.MODE_PRIVATE);
+        return sharedPreferences.getString("NAME",null);
     }
 
 
